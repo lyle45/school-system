@@ -1,0 +1,60 @@
+<md-content flex>
+    <form editable-form name="$ctrl.studentInfo" onaftersave="$ctrl.submitForm()" novalidate>
+        <div layout="row" class="edit-button">
+            <!-- button to show form -->
+            <span ng-if="!$ctrl.studentInfo.$visible" layout="row" flex>
+                <span flex></span>
+                <md-button class="md-primary md-raised"
+                           ng-click="$ctrl.studentInfo.$show()">Edit</md-button>
+            </span>
+            <!-- buttons to submit / cancel form -->
+            <span ng-if="$ctrl.studentInfo.$visible" layout="row" flex>
+                <md-button class="md-raised md-primary" ng-click="$ctrl.verifyDelete()"
+                           ng-disabled="$ctrl.newStudent">Delete</md-button>
+                <span flex></span>
+                <md-button type="submit" class="md-primary md-raised">Save</md-button>
+                <md-button class="md-raised" ng-click="$ctrl.studentInfo.$cancel()"
+                           ng-disabled="$ctrl.newStudent">Cancel</md-button>
+            </span>
+        </div>
+
+        <!-- User details sample -->
+        <md-list-item>
+            <img ng-src="{{$ctrl.student.image}}" class="md-avatar avatar-image">
+            <md-content layout="column" class="md-list-item-text">
+                <div class="title">Name:</div>
+                <div class="title" editable-text="$ctrl.student.name" onbeforesave="$ctrl.validateFields($data)"
+                     e-name="name">{{$ctrl.student.name }}
+                </div>
+                <span class="title">Email:</span>
+                <div class="title" editable-text="$ctrl.student.email" onbeforesave="$ctrl.validateFields($data)"
+                     e-name="email">
+                    {{$ctrl.student.email}}
+                </div>
+                <span class="title">Phone:</span>
+                <div class="title" editable-text="$ctrl.student.phone" onbeforesave="$ctrl.validateNumber($data)"
+                     e-name="phone">
+                    {{$ctrl.student.phone}}
+                </div>
+                <span class="title">Image:</span>
+                <div class="title" editable-text="$ctrl.student.image" onbeforesave="$ctrl.validateFields($data)"
+                     e-name="image">
+                    {{$ctrl.student.image}}
+                </div>
+
+            </md-content>
+        </md-list-item>
+
+        <md-list class="md-dense" editable-checklist="$ctrl.student.courses" onbeforesave="$ctrl.checkRemovedCourses($data)" e-ng-options="c.id as c.name for c in $ctrl.availableCourses" flex>
+            <md-subheader class="md-no-sticky">Courses:</md-subheader>
+            <md-list-item class="md-2-line" ng-repeat="course in $ctrl.currentCourses">
+                <img ng-src="{{course.image}}" class="md-avatar avatar-image" alt="{{course.description}}"/>
+                <div class="md-list-item-text" layout="column">
+                    <h3>{{ course.name }}</h3>
+                    <p>{{ course.description }}</p>
+                </div>
+            </md-list-item>
+        </md-list>
+    </form>
+
+</md-content>

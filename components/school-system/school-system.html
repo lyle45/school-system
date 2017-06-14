@@ -1,0 +1,11 @@
+<toolbar></toolbar>
+<md-content class="md-padding full-size" layout-gt-sm="row" layout="column">
+    <div ng-if="!$root.adminView" flex="40" layout="row">
+        <students-list flex="50"></students-list>
+        <courses-list flex="50"></courses-list>
+    </div>
+    <div ng-if="$root.adminView" flex="20">
+        <admins-list></admins-list>
+    </div>
+    <main-container flex="60"></main-container>
+</md-content>

@@ -1,0 +1,54 @@
+<md-content flex>
+    <form novalidate editable-form name="$ctrl.adminInfo" onaftersave="$ctrl.submitForm()">
+        <div layout="row" class="edit-button">
+            <!-- button to show form -->
+            <span ng-if="!$ctrl.adminInfo.$visible" layout="row" flex>
+                <span flex></span>
+                <md-button class="md-primary md-raised"
+                           ng-click="$ctrl.adminInfo.$show()">Edit</md-button>
+            </span>
+            <!-- buttons to submit / cancel form -->
+            <span ng-if="$ctrl.adminInfo.$visible" layout="row" flex>
+                <md-button class="md-raised md-primary" ng-click="$ctrl.verifyDelete()"
+                           ng-disabled="$ctrl.newAdmin  || $ctrl.admin.currentUser">Delete</md-button>
+                <span flex></span>
+                <md-button type="submit" class="md-primary md-raised">Save</md-button>
+                <md-button class="md-raised" ng-click="$ctrl.adminInfo.$cancel()"
+                           ng-disabled="$ctrl.newAdmin">Cancel</md-button>
+            </span>
+        </div>
+
+        <!-- User details -->
+        <md-list-item>
+            <img ng-src="{{$ctrl.admin.image}}" class="md-avatar avatar-image">
+            <md-content layout="column" class="md-list-item-text">
+                <div class="title">Name:</div>
+                <div class="title" editable-text="$ctrl.admin.name" onbeforesave="$ctrl.validateFields($data)" e-name="name">{{$ctrl.admin.name }}
+                </div>
+                <span class="title">Email:</span>
+                <div class="title" editable-email="$ctrl.admin.email" onbeforesave="$ctrl.validateFields($data)" e-name="email">
+                    {{$ctrl.admin.email }}
+                </div>
+                <span class="title" ng-if="!$ctrl.admin.id">Password:</span>
+                <div class="title" ng-if="!$ctrl.admin.id" editable-password="$ctrl.admin.password" onbeforesave="$ctrl.validateFields($data)" ng-name="password">
+                    {{$ctrl.admin.password }}
+                </div>
+                <span class="title">Phone:</span>
+                <div class="title" editable-text="$ctrl.admin.phone" onbeforesave="$ctrl.validateNumber($data)" e-name="phone">
+                    {{$ctrl.admin.phone }}
+                </div>
+                <span class="title">Image:</span>
+                <div class="title" editable-text="$ctrl.admin.image" onbeforesave="$ctrl.validateFields($data)" e-name="image" >
+                    {{$ctrl.admin.image }}
+                </div>
+                <span class="title">Role:</span>
+                <div class="title" editable-select="$ctrl.admin.role" onbeforesave="$ctrl.validateFields($data)" ng-if="!$ctrl.admin.currentUser" e-ng-options="role as role for role in $ctrl.availableRoles" e-name="role">
+                    {{$ctrl.admin.role }}
+                </div>
+                <div class="title" ng-if="$ctrl.admin.currentUser">
+                    {{$ctrl.admin.role }}
+                </div>
+            </md-content>
+        </md-list-item>
+    </form>
+</md-content>

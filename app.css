@@ -1,0 +1,70 @@
+/* app css stylesheet */
+
+body {
+    height:100%;
+    overflow: hidden;
+}
+[ui-view] {
+    height:100%;
+}
+.menu {
+    list-style: none;
+    border-bottom: 0.1em solid black;
+    margin-bottom: 2em;
+    padding: 0 0 0.5em;
+}
+
+.menu:before {
+    content: "[";
+}
+
+.menu:after {
+    content: "]";
+}
+
+.menu > li {
+    display: inline;
+}
+
+.menu > li + li:before {
+    content: "|";
+    padding-right: 0.3em;
+}
+
+.loginBox {
+    max-width: 90%;
+    width: 500px
+}
+
+.stretch input {
+    width: 100%
+}
+
+.avatar-image {
+    height: 40px;
+    width: 40px;
+}
+
+.full-size {
+    height: 100%;
+    width: 100%;
+}
+
+.list-header {
+    padding: 0 16px 0 16px;
+}
+
+.main-box {
+    overflow: auto;
+    height: 500px;
+}
+
+.no-pick {
+    font-size: 4em;
+    text-align: center;
+    color: lightgray;
+}
+
+.editable-checklist label {
+    display: block;
+}

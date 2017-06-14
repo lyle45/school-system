@@ -1,0 +1,24 @@
+<div layout="column" layout-align="center center" layout-fill="layout-fill">
+    <div class="loginBox Smd-whiteframe-z1" layout="column">
+        <form ng-submit="$ctrl.login()">
+            <md-toolbar>
+                <h2 class="md-toolbar-tools"><span>The School System</span></h2>
+            </md-toolbar>
+            <md-content ng-if="$ctrl.error" class="md-primary md-warn">{{$ctrl.errorMessage}}</md-content>
+            <md-content class="md-padding" layout="column">
+                <md-input-container>
+                    <label>Email Address</label>
+                    <input type="text" name="username" ng-model="$ctrl.loginForm.username"/>
+                </md-input-container>
+                <md-input-container>
+                    <label>Password</label>
+                    <input type="password" name="password" ng-model="$ctrl.loginForm.password"/>
+                </md-input-container>
+                <div layout="row" layout-align="center center" style="padding-top:20px">
+                    <md-button class="md-raised md-primary" type="submit" ng-disabled="$ctrl.disabled">Login</md-button>
+                    <div flex="flex"></div>
+                </div>
+            </md-content>
+        </form>
+    </div>
+</div>

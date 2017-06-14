@@ -1,0 +1,23 @@
+<div layout="column" class="main-box list-header">
+    <md-toolbar class="md-hue-3">
+        <div class="md-toolbar-tools">
+            <span class="md-flex">Admins</span>
+            <span flex></span>
+            <i class="fa fa-plus" ng-click="$ctrl.createAdmin()"></i>
+        </div>
+    </md-toolbar>
+    <md-content>
+        <md-list class="" flex>
+            <md-list-item class="md-2-line md-long-text" ng-repeat="admin in $ctrl.admins" ng-click="$ctrl.pickAdmin(admin) | orderBy: admin.currentUser">
+                <img ng-src="{{admin.image}}" class="md-avatar avatar-image" alt="{{admin.name}}"/>
+                <div class="md-list-item-text" layout="column">
+                    <h3>{{ admin.name }}</h3>
+                    <h4>{{ admin.email }}</h4>
+                    <p>{{ admin.phone }}</p>
+                    <p>{{ admin.role }}</p>
+                    <p ng-if="admin.currentUser">--Current User--</p>
+                </div>
+            </md-list-item>
+        </md-list>
+    </md-content>
+</div>

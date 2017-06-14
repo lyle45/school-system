@@ -1,0 +1,15 @@
+<md-content>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+                <img ng-src="{{$ctrl.user.image}}" class="md-avatar avatar-image"/><span>Hi {{$ctrl.user.name}}! Welcome To My school Management System!</span>
+            <span flex></span>
+            <md-button ng-click="$ctrl.toggleAdminView()" class="md-raised switch-button" ng-if="$ctrl.user.role !== 'sales'">
+                <span ng-if="!$root.adminView">Administration</span>
+                <span ng-if="$root.adminView">Main</span>
+            </md-button>
+            <md-button class="md-raised" aria-label="logout" ng-click="$ctrl.logout()">
+                LOG OUT
+            </md-button>
+        </div>
+    </md-toolbar>
+</md-content>

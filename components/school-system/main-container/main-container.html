@@ -1,0 +1,21 @@
+<div layout="column" ng-cloak class="full-size main-box">
+    <md-toolbar class="md-warn">
+        <div class="md-toolbar-tools"></div>
+    </md-toolbar>
+
+    <student-info selected-student="$ctrl.pickedStudent" save-student="$ctrl.saveStudent(student)"
+                  delete-student="$ctrl.deleteStudent(student)"
+                  ng-if="$ctrl.pickedStudent"></student-info>
+    <course-info selected-course="$ctrl.pickedCourse" save-course="$ctrl.saveCourse(course)"
+                 delete-course="$ctrl.deleteCourse(course)"
+                 ng-if="$ctrl.pickedCourse"></course-info>
+    <admin-info selected-admin="$ctrl.pickedAdmin" save-admin="$ctrl.saveAdmin(admin)"
+                delete-admin="$ctrl.deleteAdmin(admin)"
+                ng-if="$ctrl.pickedAdmin"></admin-info>
+
+    <md-content class="full-size no-pick" layout="row" layout-align="center center"
+                ng-if="!($ctrl.pickedStudent) && !($ctrl.pickedCourse) && !($ctrl.pickedAdmin)">
+        <span flex>Main Container</span>
+    </md-content>
+
+</div>

@@ -1,0 +1,54 @@
+<md-content flex>
+    <form novalidate editable-form name="$ctrl.courseInfo" onaftersave="$ctrl.submitForm()">
+        <div layout="row" class="edit-button" ng-if="$ctrl.currentUserRole !== 'sales'">
+            <!-- button to show form -->
+            <span ng-if="!$ctrl.courseInfo.$visible" layout="row" flex>
+                <span flex></span>
+                <md-button class="md-primary md-raised"
+                           ng-click="$ctrl.courseInfo.$show()">Edit</md-button>
+            </span>
+            <!-- buttons to submit / cancel form -->
+            <span ng-if="$ctrl.courseInfo.$visible" layout="row" flex>
+                <md-button class="md-raised md-primary" ng-click="$ctrl.verifyDelete()"
+                           ng-disabled="$ctrl.newCourse">Delete</md-button>
+                <span flex></span>
+                <md-button type="submit" class="md-primary md-raised">Save</md-button>
+                <md-button class="md-raised" ng-click="$ctrl.courseInfo.$cancel()"
+                           ng-disabled="$ctrl.newCourse">Cancel</md-button>
+            </span>
+        </div>
+
+        <!-- User details sample -->
+        <md-list-item>
+            <img ng-src="{{$ctrl.course.image}}" class="md-avatar avatar-image">
+            <md-content layout="column" class="md-list-item-text">
+                <div class="title">Name:</div>
+                <div class="title" editable-text="$ctrl.course.name" onbeforesave="$ctrl.validateFields($data)"
+                     e-name="name">{{$ctrl.course.name }}, {{$ctrl.currentStudents.length}} Student!
+                </div>
+                <span class="title">Description:</span>
+                <div class="title" editable-textarea="$ctrl.course.description"
+                     onbeforesave="$ctrl.validateFields($data)" e-name="description">
+                    {{$ctrl.course.description }}
+                </div>
+                <span class="title">Image:</span>
+                <div class="title" editable-text="$ctrl.course.image" onbeforesave="$ctrl.validateFields($data)"
+                     e-name="image">
+                    {{$ctrl.course.image }}
+                </div>
+            </md-content>
+        </md-list-item>
+    </form>
+    <md-list class="md-dense" flex>
+        <md-subheader class="md-no-sticky">Students:</md-subheader>
+        <md-list-item class="md-2-line" ng-repeat="student in $ctrl.currentStudents">
+            <img ng-src="{{student.image}}" class="md-avatar avatar-image"/>
+            <div class="md-list-item-text" layout="column">
+                <h3>{{ student.name }}</h3>
+                <h4>{{ student.email }}</h4>
+                <p>{{ student.phone }}</p>
+            </div>
+        </md-list-item>
+    </md-list>
+
+</md-content>
